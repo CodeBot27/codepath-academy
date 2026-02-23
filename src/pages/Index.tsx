@@ -71,7 +71,7 @@ const Index = () => {
               <span className="ml-2 font-mono text-xs text-muted-foreground">~/codepath-free</span>
             </div>
             <div className="p-6 text-left font-mono text-sm">
-              <p className="text-muted-foreground"><span className="text-primary">$</span> npx create-your-career</p>
+              <p className="text-muted-foreground"><span className="text-primary">$</span> npm create@career Full-Stack-Dev</p>
               <p className="mt-2 text-muted-foreground"><span className="text-primary">✓</span> HTML & CSS fundamentals... <span className="text-primary">done</span></p>
               <p className="text-muted-foreground"><span className="text-primary">✓</span> JavaScript mastery... <span className="text-primary">done</span></p>
               <p className="text-muted-foreground"><span className="text-primary">✓</span> Git & version control... <span className="text-primary">done</span></p>
@@ -94,7 +94,7 @@ const Index = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl font-bold md:text-4xl">Everything you need to <span className="text-primary">succeed</span></h2>
-            <p className="mt-4 text-muted-foreground">No fluff, no paywalls — just a clear path to becoming a developer.</p>
+            <p className="mt-4 text-muted-foreground">No fluff, no paywalls, just a clear path to becoming a developer.</p>
           </motion.div>
           <motion.div
             className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
@@ -107,7 +107,7 @@ const Index = () => {
               { icon: BookOpen, title: 'Structured Curriculum', desc: 'Follow a clear path from fundamentals to advanced topics with hands-on lessons.' },
               { icon: Code2, title: 'Real Code Examples', desc: 'Every lesson includes working code blocks you can study and reference.' },
               { icon: TrendingUp, title: 'Track Your Progress', desc: 'Mark lessons complete, see your overall progress, and pick up where you left off.' },
-              { icon: Terminal, title: 'Hands-On Practice', desc: 'Build real projects as you learn — not just theory, but actual coding experience.' },
+              { icon: Terminal, title: 'Hands-On Practice', desc: 'Build real projects as you learn, not just theory, but actual coding experience.' },
               { icon: Globe, title: 'Learn Anywhere', desc: 'Access your courses from any device. Your progress syncs across all platforms.' },
               { icon: Layers, title: 'Modular Learning', desc: 'Each track is broken into bite-sized modules so you can learn at your own pace.' },
             ].map(({ icon: Icon, title, desc }) => (
@@ -195,7 +195,7 @@ const Index = () => {
           >
             {[
               { step: '01', title: 'Sign Up Free', desc: 'Create your account in seconds. No credit card, no hidden fees.' },
-              { step: '02', title: 'Choose a Track', desc: 'Pick a learning path that matches your goals — from web basics to full-stack.' },
+              { step: '02', title: 'Choose a Track', desc: 'Pick a learning path that matches your goals, from web basics to full-stack.' },
               { step: '03', title: 'Learn & Build', desc: 'Work through lessons, write real code, and build projects you can show off.' },
             ].map(({ step, title, desc }) => (
               <motion.div key={step} variants={fadeUp} transition={{ duration: 0.5 }} className="text-center">
@@ -225,7 +225,7 @@ const Index = () => {
             <h2 className="text-3xl font-bold md:text-4xl">Why is it free?</h2>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
               We believe quality coding education should be accessible to everyone.
-              No paywalls, no premium tiers — every lesson, every track, completely free forever.
+              No paywalls, no premium tiers, every lesson, every track, completely free forever.
             </p>
             <div className="mt-8 grid gap-4 text-left sm:grid-cols-2">
               {[
@@ -256,7 +256,7 @@ const Index = () => {
         >
           <h2 className="text-3xl font-bold md:text-4xl">Ready to start <span className="text-primary">coding</span>?</h2>
           <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
-            Join thousands of learners building their developer careers — no experience required.
+            Join thousands of learners building their developer careers, no experience required.
           </p>
           <div className="mt-8 flex items-center justify-center gap-4">
             <Button size="lg" asChild className="gap-2">
@@ -273,7 +273,7 @@ const Index = () => {
         <div className="container mx-auto flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Code2 className="h-5 w-5 text-primary" />
-            <span className="font-semibold text-foreground">CodePath Free</span> — Learn to code, for free.
+            <span className="font-semibold text-foreground">CodePath Free</span>&copy; {new Date().getFullYear()} Created by <a href="https://mogamatsm.netlify.app/" target="_blank" rel="noopener noreferrer">Mogamat Smith</a>
           </div>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <Link to="/tracks" className="transition hover:text-foreground">Tracks</Link>
