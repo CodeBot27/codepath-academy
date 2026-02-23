@@ -38,9 +38,14 @@ const Navbar = () => {
             </Link>
           )}
           {user ? (
-            <Button variant="ghost" size="sm" onClick={handleSignOut}>
-              <LogOut className="mr-1 h-4 w-4" /> Sign Out
-            </Button>
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-muted-foreground">
+                Welcome back, <span className="font-semibold text-primary">{user.user_metadata?.full_name || user.email?.split('@')[0] || 'User'}</span>!
+              </span>
+              <Button variant="ghost" size="sm" onClick={handleSignOut}>
+                <LogOut className="mr-1 h-4 w-4" /> Sign Out
+              </Button>
+            </div>
           ) : (
             <div className="flex gap-2">
               <Button variant="ghost" size="sm" asChild>
