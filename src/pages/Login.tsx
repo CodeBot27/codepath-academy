@@ -29,11 +29,16 @@ const Login = () => {
   return (
     <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4">
       <div className="w-full max-w-sm space-y-6">
+
+        <Button variant="outline" size="sm" asChild className="mb-4">
+          <Link to="/">← Back</Link>
+        </Button>
         <div className="text-center">
           <Code2 className="mx-auto h-10 w-10 text-primary" />
           <h1 className="mt-4 text-2xl font-bold">Welcome back</h1>
           <p className="mt-1 text-sm text-muted-foreground">Sign in to continue learning</p>
         </div>
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>

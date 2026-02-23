@@ -31,6 +31,9 @@ const Signup = () => {
   return (
     <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4">
       <div className="w-full max-w-sm space-y-6">
+         <Button variant="outline" size="sm" asChild className="mb-4">
+          <Link to="/">← Back</Link>
+        </Button>
         <div className="text-center">
           <Code2 className="mx-auto h-10 w-10 text-primary" />
           <h1 className="mt-4 text-2xl font-bold">Create your account</h1>

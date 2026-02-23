@@ -37,7 +37,7 @@ const Index = () => {
           variants={staggerContainer}
         >
           <motion.div variants={fadeUp} transition={{ duration: 0.5 }} className="mx-auto inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-            <Zap className="h-4 w-4" /> 100% Free — No credit card required
+            <TrendingUp className="h-4 w-4" /> 100% Free • No credit card required
           </motion.div>
           <motion.h1 variants={fadeUp} transition={{ duration: 0.6 }} className="mt-6 text-4xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl">
             Learn to Code,<br />
