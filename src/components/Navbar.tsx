@@ -25,7 +25,6 @@ const Navbar = () => {
 
   const menuItems = [
     { to: '/tracks', label: 'Tracks', show: true },
-    { to: '/tracks', label: 'Tracks', show: true },
     { to: '/about', label: 'About', show: true },
     { to: '/dashboard', label: 'Dashboard', icon: <LayoutDashboard className="h-4 w-4" />, show: !!user },
     { to: '/admin', label: 'Admin', icon: <Shield className="h-4 w-4" />, show: !!isAdmin },
