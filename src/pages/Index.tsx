@@ -47,7 +47,7 @@ const Index = () => {
             Structured learning tracks that take you from zero to full-stack developer.
             Real projects, hands-on practice, completely free.
           </motion.p>
-          <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="mt-10 flex items-center justify-center gap-4">
+          <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4">
             <Button size="lg" asChild className="gap-2">
               <Link to={user ? '/dashboard' : '/signup'}>
                 {user ? 'Go to Dashboard' : 'Start Learning Free'} <ArrowRight className="h-4 w-4" />
@@ -269,16 +269,24 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border px-4 py-10">
-        <div className="container mx-auto flex flex-col items-center justify-between gap-4 md:flex-row">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Code2 className="h-5 w-5 text-primary" />
-            <span className="font-semibold text-foreground">CodePath Free</span>&copy; {new Date().getFullYear()} Created by <a href="https://mogamatsm.netlify.app/" target="_blank" rel="noopener noreferrer">Mogamat Smith</a>
+      <footer className="border-t border-border px-6 py-10">
+        <div className="container mx-auto flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
+          <div className="flex flex-col items-center gap-2 md:flex-row md:items-center">
+            <div className="flex items-center gap-2">
+              <Code2 className="h-5 w-5 text-primary" />
+              <span className="font-semibold text-foreground">CodePath Free</span>
+            </div>
+            <span className="text-sm text-muted-foreground">
+              &copy; {new Date().getFullYear()} Created by{' '}
+              <a href="https://mogamatsm.netlify.app/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                Mogamat Smith
+              </a>
+            </span>
           </div>
           <div className="flex gap-6 text-sm text-muted-foreground">
-            <Link to="/tracks" className="transition hover:text-foreground">Tracks</Link>
-            <Link to="/signup" className="transition hover:text-foreground">Sign Up</Link>
-            <Link to="/login" className="transition hover:text-foreground">Log In</Link>
+            <Link to="/tracks" className="transition hover:text-primary">Tracks</Link>
+            <Link to="/signup" className="transition hover:text-primary">Sign Up</Link>
+            <Link to="/login" className="transition hover:text-primary">Log In</Link>
           </div>
         </div>
       </footer>
