@@ -2,13 +2,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Code2, LogOut, LayoutDashboard, Shield, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const { user, isAdmin, signOut } = useAuth();
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const handleSignOut = async () => {
     await signOut();
@@ -32,8 +40,18 @@ const Navbar = () => {
   };
 
   return (
-    <div className="sticky top-0 z-50 flex justify-center px-4 pt-3">
-      <nav className="w-full max-w-5xl rounded-2xl border border-border bg-card/80 backdrop-blur-md shadow-lg">
+    <div
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled ? 'flex justify-center px-4 pt-3' : ''
+      }`}
+    >
+      <nav
+        className={`w-full border-border backdrop-blur-md shadow-lg transition-all duration-300 ${
+          scrolled
+            ? 'max-w-5xl rounded-2xl border bg-card/80'
+            : 'border-b bg-background/80'
+        }`}
+      >
         <div className="flex h-14 items-center justify-between px-5">
           <Link to="/" className="flex items-center gap-2 text-lg font-bold text-foreground">
             <Code2 className="h-6 w-6 text-primary" />
