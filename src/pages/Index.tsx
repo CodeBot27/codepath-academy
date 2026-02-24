@@ -285,6 +285,7 @@ const Index = () => {
           </div>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <Link to="/tracks" className="transition hover:text-primary">Tracks</Link>
+            <Link to="/about" className="transition hover:text-primary">About</Link>
             <Link to="/signup" className="transition hover:text-primary">Sign Up</Link>
             <Link to="/login" className="transition hover:text-primary">Log In</Link>
           </div>
