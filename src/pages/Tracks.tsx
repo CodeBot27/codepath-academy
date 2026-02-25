@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useTracks } from '@/hooks/useTracks';
 import { useCoursesByTrack } from '@/hooks/useCourse';
-import { BookOpen, Clock, ArrowRight } from 'lucide-react';
+import { BookOpen, Clock, ArrowRight, Lock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+
+const COMING_SOON_TRACKS = ['Backend Development'];
 
 const TrackCourses = ({ trackId }: { trackId: string }) => {
   const { data: courses } = useCoursesByTrack(trackId);
@@ -39,16 +41,32 @@ const Tracks = () => {
         <p className="mt-2 text-muted-foreground">Choose a career track and follow the structured path.</p>
       </div>
 
-      {tracks?.map(track => (
-        <section key={track.id} className="mb-12">
-          <div className="mb-4 flex items-center gap-3">
-            <BookOpen className="h-5 w-5 text-primary" />
-            <h2 className="text-xl font-semibold">{track.title}</h2>
-          </div>
-          {track.description && <p className="mb-4 text-sm text-muted-foreground">{track.description}</p>}
-          <TrackCourses trackId={track.id} />
-        </section>
-      ))}
+      {tracks?.map(track => {
+        const isComingSoon = COMING_SOON_TRACKS.includes(track.title);
+        return (
+          <section key={track.id} className="mb-12">
+            <div className="mb-4 flex items-center gap-3">
+              <BookOpen className="h-5 w-5 text-primary" />
+              <h2 className="text-xl font-semibold">{track.title}</h2>
+              {isComingSoon && (
+                <Badge className="bg-accent text-accent-foreground">
+                  <Lock className="mr-1 h-3 w-3" /> Coming Soon
+                </Badge>
+              )}
+            </div>
+            {track.description && <p className="mb-4 text-sm text-muted-foreground">{track.description}</p>}
+            {isComingSoon ? (
+              <div className="rounded-lg border border-dashed border-border bg-muted/30 p-8 text-center">
+                <Lock className="mx-auto mb-3 h-8 w-8 text-muted-foreground/50" />
+                <p className="font-medium text-muted-foreground">This track is under development</p>
+                <p className="mt-1 text-sm text-muted-foreground/70">Check back soon for courses on server-side programming, APIs, and databases.</p>
+              </div>
+            ) : (
+              <TrackCourses trackId={track.id} />
+            )}
+          </section>
+        );
+      })}
 
       {!tracks?.length && <p className="text-muted-foreground">No tracks available yet.</p>}
     </div>
