@@ -95,9 +95,27 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Space Grotesk', system-ui, sans-serif;
+    overflow-x: hidden;
   }
 
   code, pre, .font-mono {
     font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Prevent any element from causing horizontal overflow */
+  pre, code, table, img, video, iframe, .prose pre, .prose code {
+    max-width: 100%;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .prose pre code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 }
