@@ -18,7 +18,7 @@ import { useLessonNeighbors } from "@/hooks/useLessonNeighbors";
 import remarkGfm from "remark-gfm";
 
 const MarkdownBlock = ({ content }: { content: string }) => (
-  <div className="prose prose-invert max-w-none [overflow-wrap:anywhere] [word-break:break-word] prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:text-primary prose-code:[overflow-wrap:anywhere] prose-a:text-primary prose-a:[overflow-wrap:anywhere] prose-pre:overflow-x-auto prose-pre:max-w-full prose-img:max-w-full prose-table:block prose-table:overflow-x-auto">
+  <div className="prose prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:text-primary prose-a:text-primary prose-img:max-w-full">
     <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
   </div>
 );
@@ -43,12 +43,12 @@ const VideoBlock = ({ url, title }: { url: string; title?: string }) => {
 };
 
 const CodeBlock = ({ code, language }: { code: string; language?: string }) => (
-  <div className="rounded-lg border border-border min-w-0">
+  <div className="rounded-lg border border-border">
     <div className="flex items-center gap-2 bg-muted/50 px-4 py-2 text-xs text-muted-foreground">
       <span className="font-mono">{language || "code"}</span>
     </div>
-    <pre className="overflow-x-auto bg-muted/30 p-4 font-mono text-sm leading-relaxed">
-      <code className="whitespace-pre-wrap [overflow-wrap:anywhere]">{code}</code>
+    <pre className="bg-muted/30 p-4 font-mono text-sm leading-relaxed">
+      <code>{code}</code>
     </pre>
   </div>
 );
@@ -162,7 +162,7 @@ const LessonPlayer = () => {
   };
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 w-full min-w-0 overflow-x-hidden">
+    <div className="mx-auto max-w-3xl px-4 py-8 w-full">
       <Button
         variant="ghost"
         size="sm"
