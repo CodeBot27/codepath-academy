@@ -18,7 +18,7 @@ import { useLessonNeighbors } from "@/hooks/useLessonNeighbors";
 import remarkGfm from "remark-gfm";
 
 const MarkdownBlock = ({ content }: { content: string }) => (
-  <div className="prose prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:text-primary prose-a:text-primary">
+  <div className="prose prose-invert max-w-none overflow-hidden break-words prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:text-primary prose-code:break-all prose-a:text-primary prose-pre:overflow-x-auto prose-pre:max-w-full prose-img:max-w-full">
     <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
   </div>
 );
@@ -47,8 +47,8 @@ const CodeBlock = ({ code, language }: { code: string; language?: string }) => (
     <div className="flex items-center gap-2 bg-muted/50 px-4 py-2 text-xs text-muted-foreground">
       <span className="font-mono">{language || "code"}</span>
     </div>
-    <pre className="overflow-x-auto bg-muted/30 p-4 font-mono text-sm leading-relaxed">
-      <code>{code}</code>
+    <pre className="overflow-x-auto bg-muted/30 p-4 font-mono text-sm leading-relaxed max-w-full">
+      <code className="break-all whitespace-pre-wrap">{code}</code>
     </pre>
   </div>
 );
@@ -162,7 +162,7 @@ const LessonPlayer = () => {
   };
 
   return (
-    <div className="container mx-auto max-w-3xl px-4 py-8">
+    <div className="mx-auto max-w-3xl px-4 py-8 overflow-hidden">
       <Button
         variant="ghost"
         size="sm"
