@@ -2,8 +2,51 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 import { useTracks } from '@/hooks/useTracks';
-import { Code2, BookOpen, TrendingUp, Zap, Terminal, Users, ArrowRight, CheckCircle2, Globe, Layers, Rocket } from 'lucide-react';
+import { Code2, BookOpen, TrendingUp, Zap, Terminal, Users, ArrowRight, CheckCircle2, Globe, Layers, Rocket, Lock } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useCoursesByTrack } from '@/hooks/useCourse';
+import { Badge } from '@/components/ui/badge';
+import { Track } from '@/types/database';
+
+const TrackCard = ({ track }: { track: Track }) => {
+  const { data: courses, isLoading } = useCoursesByTrack(track.id);
+  const hasContent = !isLoading && courses && courses.length > 0;
+  const isLocked = !isLoading && !hasContent;
+
+  if (isLoading) return null;
+
+  if (isLocked) {
+    return (
+      <div className="rounded-xl border border-dashed border-border bg-muted/30 p-8 opacity-70">
+        <div className="mb-3 inline-flex rounded-lg bg-muted p-3">
+          <Lock className="h-6 w-6 text-muted-foreground" />
+        </div>
+        <div className="mb-2 flex items-center gap-2">
+          <h3 className="text-xl font-semibold text-muted-foreground">{track.title}</h3>
+          <Badge variant="secondary" className="text-xs"><Lock className="mr-1 h-3 w-3" />Coming Soon</Badge>
+        </div>
+        <p className="text-sm text-muted-foreground/70">{track.description}</p>
+        <p className="mt-4 text-xs text-muted-foreground/50">Content coming soon — check back later!</p>
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      to="/tracks"
+      className="group block rounded-xl border border-border bg-card p-8 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+    >
+      <div className="mb-3 inline-flex rounded-lg bg-accent/10 p-3">
+        <Rocket className="h-6 w-6 text-accent" />
+      </div>
+      <h3 className="mb-2 text-xl font-semibold group-hover:text-primary transition-colors">{track.title}</h3>
+      <p className="text-sm text-muted-foreground">{track.description}</p>
+      <div className="mt-4 flex items-center gap-1 text-sm font-medium text-primary">
+        Explore track <ArrowRight className="h-4 w-4" />
+      </div>
+    </Link>
+  );
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -152,19 +195,7 @@ const Index = () => {
             >
               {tracks.map((track) => (
                 <motion.div key={track.id} variants={fadeUp} transition={{ duration: 0.5 }}>
-                  <Link
-                    to="/tracks"
-                    className="group block rounded-xl border border-border bg-card p-8 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
-                  >
-                    <div className="mb-3 inline-flex rounded-lg bg-accent/10 p-3">
-                      <Rocket className="h-6 w-6 text-accent" />
-                    </div>
-                    <h3 className="mb-2 text-xl font-semibold group-hover:text-primary transition-colors">{track.title}</h3>
-                    <p className="text-sm text-muted-foreground">{track.description}</p>
-                    <div className="mt-4 flex items-center gap-1 text-sm font-medium text-primary">
-                      Explore track <ArrowRight className="h-4 w-4" />
-                    </div>
-                  </Link>
+                  <TrackCard track={track} />
                 </motion.div>
               ))}
             </motion.div>
