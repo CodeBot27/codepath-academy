@@ -2,21 +2,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Navbar from "@/components/Navbar";
-import ProtectedRoute from "@/components/ProtectedRoute";
 import ScrollToTop from "@/components/ScrollToTop";
-import Index from "./pages/Index";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Tracks from "./pages/Tracks";
-import CoursePage from "./pages/CoursePage";
-import Dashboard from "./pages/Dashboard";
-import LessonPlayer from "./pages/LessonPlayer";
-import Admin from "./pages/Admin";
-import About from "./pages/About";
-import NotFound from "./pages/NotFound";
+import AnimatedRoutes from "@/components/AnimatedRoutes";
 
 const queryClient = new QueryClient();
 
@@ -29,18 +19,7 @@ const App = () => (
         <AuthProvider>
           <ScrollToTop />
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/tracks" element={<Tracks />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/courses/:courseId" element={<ProtectedRoute><CoursePage /></ProtectedRoute>} />
-            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-            <Route path="/learn/:lessonId" element={<ProtectedRoute><LessonPlayer /></ProtectedRoute>} />
-            <Route path="/admin" element={<ProtectedRoute requireAdmin><Admin /></ProtectedRoute>} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AnimatedRoutes />
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
